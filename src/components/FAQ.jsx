@@ -9,7 +9,7 @@ const faqs = [
   },
   {
     question: 'Is the app available on both Android and iOS?',
-    answer: "HEQA Solutions is currently available on Android via Google Play Store. Our iOS version is in final development and will be launching very soon. Stay tuned!",
+    answer: "Yes! HEQA Solutions is available on both Android (Google Play Store) and iOS (App Store). Download it on whichever device you prefer and start studying right away.",
   },
   {
     question: 'Do I need internet to study?',
