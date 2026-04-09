@@ -1,197 +1,132 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap, Heart } from 'lucide-react';
+import { GraduationCap, Mail, MessageCircle, Facebook, Twitter, Instagram, Github, Youtube } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const linkHover = {
-    initial: { x: 0 },
-    hover: { x: 4, color: '#60a5fa' },
-  };
-
   return (
-    <footer className="bg-slate-900 text-slate-400 relative overflow-hidden" id="footer">
-      {/* Top SVG wave separator */}
-      <div className="absolute top-0 left-0 right-0 pointer-events-none -translate-y-[99%]">
-        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full" preserveAspectRatio="none">
-          <path d="M0 60V30c120-20 240-30 360-25s240 25 360 30 240-5 360-15 240-10 360 0V60H0z" fill="#0f172a"/>
-        </svg>
-      </div>
-
-      {/* Background decorations */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary-900/20 rounded-full blur-[100px]" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-primary-900/20 rounded-full blur-[100px]" />
-      </div>
-
-      {/* Main Footer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
-
-          {/* Brand Column */}
-          <div className="lg:col-span-2">
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="flex items-center gap-2.5 mb-6 cursor-default w-fit"
-            >
-              <div className="bg-primary-600 text-white p-2 rounded-xl shadow-lg shadow-primary-600/20">
-                <GraduationCap className="w-5 h-5" />
+    <footer className="footer-gradient pt-20 pb-10 border-t border-slate-100 dark:border-slate-800 transition-colors relative overflow-hidden" id="footer">
+      {/* Background decoration */}
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-50 dark:bg-primary-900/10 rounded-full blur-[100px] -z-10" />
+      <div className="absolute top-0 right-0 w-72 h-72 bg-accent-50 dark:bg-accent-900/10 rounded-full blur-[80px] -z-10" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          {/* Brand Col */}
+          <div className="lg:col-span-1">
+            <a href="#home" className="flex items-center gap-2.5 mb-6 group">
+              <div className="p-2 rounded-xl bg-primary-600 text-white shadow-lg shadow-primary-600/20 group-hover:scale-110 transition-transform">
+                <GraduationCap className="w-6 h-6" />
               </div>
-              <div>
-                <span className="font-heading font-bold text-xl text-white tracking-tight">
-                  HEQA<span className="text-primary-400">Solutions</span>
-                </span>
-              </div>
-            </motion.div>
-            <p className="text-sm leading-relaxed mb-6 max-w-sm">
-              Empowering Cameroon students with comprehensive, verified past
-              questions and intelligent study tools. Making quality exam
-              preparation accessible to everyone.
+              <span className="font-heading font-extrabold text-2xl tracking-tight text-slate-900 dark:text-white">
+                HEQA<span className="text-primary-600">Solutions</span>
+              </span>
+            </a>
+            <p className="text-slate-500 dark:text-slate-400 mb-8 leading-relaxed max-w-sm">
+              The #1 study companion for Cameroonian students. 
+              Built with love in Buea to help you crush your exams.
             </p>
+            <div className="flex gap-4">
+              {[Facebook, Twitter, Instagram, Github].map((Icon, i) => (
+                <motion.a
+                  key={i}
+                  href="#"
+                  whileHover={{ y: -3, scale: 1.1 }}
+                  className="w-10 h-10 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center text-slate-400 dark:text-slate-500 hover:text-primary-600 dark:hover:text-primary-400 hover:border-primary-100 dark:hover:border-primary-900/30 transition-all shadow-sm"
+                >
+                  <Icon className="w-5 h-5" />
+                </motion.a>
+              ))}
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-bold text-slate-900 dark:text-white mb-6 uppercase tracking-widest text-xs">
+              Quick Links
+            </h4>
+            <ul className="space-y-4">
+              {['Home', 'Features', 'Showcase', 'Stats', 'Pricing', 'FAQ'].map((link) => (
+                <li key={link}>
+                  <a href={`#${link.toLowerCase()}`} className="text-slate-500 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors flex items-center gap-2 group">
+                    <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-700 group-hover:bg-primary-500 transition-colors" />
+                    {link}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="font-bold text-slate-900 dark:text-white mb-6 uppercase tracking-widest text-xs">
+              Contact Us
+            </h4>
+            <div className="space-y-5">
+              <a href="mailto:support@heqasolutions.com" className="flex items-center gap-4 group">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-all">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <div className="text-sm">
+                  <p className="text-slate-400 dark:text-slate-500 font-medium">Email</p>
+                  <p className="font-bold text-slate-700 dark:text-slate-300">support@heqa.cm</p>
+                </div>
+              </a>
+              <a href="tel:+237600000000" className="flex items-center gap-4 group">
+                <div className="w-10 h-10 rounded-xl bg-success-50 dark:bg-success-900/20 text-success-600 dark:text-success-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-all">
+                  <MessageCircle className="w-5 h-5" />
+                </div>
+                <div className="text-sm">
+                  <p className="text-slate-400 dark:text-slate-500 font-medium">WhatsApp</p>
+                  <p className="font-bold text-slate-700 dark:text-slate-300">+237 6XX XXX XXX</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          {/* Store Links */}
+          <div>
+            <h4 className="font-bold text-slate-900 dark:text-white mb-6 uppercase tracking-widest text-xs">
+              Get the App
+            </h4>
+            <div className="space-y-3">
+              <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full h-12 bg-slate-900 dark:bg-slate-800 text-white rounded-xl flex items-center justify-center gap-2 px-4 shadow-lg">
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L14.12 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.2l2.807 1.626a1 1 0 010 1.734l-2.807 1.626-2.536-2.486 2.536-2.5zM5.864 2.658L16.8 8.99l-2.301 2.301-8.635-8.633z"/></svg>
+                <div className="text-left">
+                  <p className="text-[8px] font-bold uppercase leading-none opacity-60">Get it on</p>
+                  <p className="text-xs font-bold leading-none mt-1">Google Play</p>
+                </div>
+              </motion.button>
+              <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full h-12 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white rounded-xl flex items-center justify-center gap-2 px-4 shadow-md transition-colors">
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                <div className="text-left">
+                  <p className="text-[8px] font-bold uppercase leading-none opacity-60">Download on the</p>
+                  <p className="text-xs font-bold leading-none mt-1">App Store</p>
+                </div>
+              </motion.button>
+            </div>
+            
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-sm font-medium cursor-default"
+              className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 text-xs font-medium text-slate-600 dark:text-slate-300"
             >
               <span>🇨🇲</span>
               <span>Made in Cameroon</span>
             </motion.div>
-
-            {/* Store badges */}
-            <div className="flex gap-3 mt-6">
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 bg-white/10 hover:bg-white/15 px-4 py-2 rounded-lg border border-white/10 text-white text-xs font-medium transition-colors"
-              >
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L14.12 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.2l2.807 1.626a1 1 0 010 1.734l-2.807 1.626-2.536-2.486 2.536-2.5zM5.864 2.658L16.8 8.99l-2.301 2.301-8.635-8.633z"/></svg>
-                Google Play
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 bg-white/10 hover:bg-white/15 px-4 py-2 rounded-lg border border-white/10 text-white text-xs font-medium transition-colors"
-              >
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                App Store
-              </motion.button>
-            </div>
-          </div>
-
-          {/* Product Links */}
-          <div>
-            <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-6">
-              Product
-            </h4>
-            <ul className="space-y-3 text-sm">
-              {[
-                { name: 'Features', href: '#features' },
-                { name: 'Pricing', href: '#pricing' },
-                { name: 'App Preview', href: '#showcase' },
-                { name: 'Download App', href: '#download' },
-                { name: 'Reviews', href: '#testimonials' },
-              ].map((link, idx) => (
-                <motion.li key={idx} variants={linkHover} initial="initial" whileHover="hover">
-                  <a href={link.href} className="transition-colors inline-flex items-center gap-1">
-                    <span className="w-0 group-hover:w-2 h-px bg-primary-400 transition-all" />
-                    {link.name}
-                  </a>
-                </motion.li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-6">
-              Resources
-            </h4>
-            <ul className="space-y-3 text-sm">
-              {[
-                { name: 'FAQ', href: '#faq' },
-                { name: 'Study Guides', href: '#' },
-                { name: 'Blog', href: '#' },
-                { name: 'Help Center', href: '#' },
-                { name: 'Partnerships', href: '#' },
-              ].map((link, idx) => (
-                <motion.li key={idx} variants={linkHover} initial="initial" whileHover="hover">
-                  <a href={link.href} className="transition-colors">
-                    {link.name}
-                  </a>
-                </motion.li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-6">
-              Legal
-            </h4>
-            <ul className="space-y-3 text-sm">
-              {[
-                { name: 'Privacy Policy', href: '#' },
-                { name: 'Terms of Service', href: '#' },
-                { name: 'Cookie Policy', href: '#' },
-                { name: 'Contact Us', href: '#' },
-              ].map((link, idx) => (
-                <motion.li key={idx} variants={linkHover} initial="initial" whileHover="hover">
-                  <a href={link.href} className="transition-colors">
-                    {link.name}
-                  </a>
-                </motion.li>
-              ))}
-            </ul>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-slate-500 flex items-center gap-1">
-            &copy; {currentYear} HEQA Solutions. Built with{' '}
-            <motion.span
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
-              <Heart className="w-3.5 h-3.5 text-danger-400 fill-current" />
-            </motion.span>{' '}
-            in Cameroon.
+        {/* Bottom Bar */}
+        <div className="pt-10 border-t border-slate-100 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-slate-400 dark:text-slate-500 text-sm">
+            © {currentYear} HEQA Solutions. All rights reserved.
           </p>
-
-          {/* Social Icons */}
-          <div className="flex gap-3">
-            {[
-              {
-                label: 'Facebook',
-                path: 'M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z',
-              },
-              {
-                label: 'Instagram',
-                path: 'M16 4H8a4 4 0 00-4 4v8a4 4 0 004 4h8a4 4 0 004-4V8a4 4 0 00-4-4zm-4 11a3 3 0 110-6 3 3 0 010 6zm4.5-7.5a1 1 0 110-2 1 1 0 010 2z',
-              },
-              {
-                label: 'Twitter',
-                path: 'M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z',
-              },
-              {
-                label: 'TikTok',
-                path: 'M9 12a4 4 0 104 4V4a5 5 0 005 5',
-              },
-            ].map((social, idx) => (
-              <motion.a
-                key={idx}
-                href="#"
-                aria-label={social.label}
-                whileHover={{ scale: 1.2, y: -3, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
-                className="w-9 h-9 rounded-full bg-slate-800 hover:bg-primary-600 flex items-center justify-center text-slate-400 hover:text-white transition-all duration-300"
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d={social.path} />
-                </svg>
-              </motion.a>
+          <div className="flex gap-8">
+            {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((item) => (
+              <a key={item} href="#" className="text-slate-400 dark:text-slate-500 hover:text-primary-600 dark:hover:text-primary-400 text-sm transition-colors">
+                {item}
+              </a>
             ))}
           </div>
         </div>

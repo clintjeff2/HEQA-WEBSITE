@@ -119,13 +119,13 @@ export default function HowItWorks() {
                 <div className="relative inline-flex mb-8">
                   {/* Pulsing ring behind icon */}
                   <motion.div
-                    className={`absolute inset-0 rounded-3xl ${step.bg} -z-10`}
+                    className={`absolute inset-0 rounded-3xl ${step.bg} dark:bg-slate-800 -z-10`}
                     animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0, 0.5] }}
                     transition={{ duration: 3, repeat: Infinity, delay: idx * 0.5 }}
                   />
                   <motion.div
                     whileHover={{ scale: 1.15, rotate: 5 }}
-                    className={`w-20 h-20 rounded-3xl ${step.bg} ${step.color} flex items-center justify-center ring-4 ${step.ring} bg-white shadow-lg transition-all duration-300`}
+                    className={`w-20 h-20 rounded-3xl ${step.bg} dark:bg-slate-800 ${step.color} dark:text-primary-400 flex items-center justify-center ring-4 ${step.ring} dark:ring-slate-700 bg-white dark:bg-slate-900 shadow-lg transition-all duration-300`}
                   >
                     {step.icon}
                   </motion.div>
@@ -135,10 +135,10 @@ export default function HowItWorks() {
                 </div>
 
                 {/* Text */}
-                <h3 className="text-xl font-bold text-slate-900 mb-3">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
                   {step.title}
                 </h3>
-                <p className="text-slate-500 leading-relaxed max-w-sm mx-auto">
+                <p className="text-slate-500 dark:text-slate-400 leading-relaxed max-w-sm mx-auto">
                   {step.description}
                 </p>
 

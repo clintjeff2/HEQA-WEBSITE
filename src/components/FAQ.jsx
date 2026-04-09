@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { HelpCircle, ChevronDown, PhoneCall, Mail, MessageCircle } from 'lucide-react';
 
 const faqs = [
@@ -38,10 +38,10 @@ const faqs = [
 ];
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = React.useState(0);
+  const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section className="section-padding bg-white relative overflow-hidden" id="faq">
+    <section className="section-padding bg-white dark:bg-slate-950 transition-colors relative overflow-hidden" id="faq">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
 
@@ -52,14 +52,14 @@ export default function FAQ() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <span className="text-primary-600 font-bold tracking-wider uppercase text-sm">
+              <span className="text-primary-600 dark:text-primary-400 font-bold tracking-wider uppercase text-sm">
                 FAQ
               </span>
-              <h2 className="mt-3 text-3xl md:text-4xl font-heading font-extrabold text-slate-900 mb-6 leading-tight">
+              <h2 className="mt-3 text-3xl md:text-4xl font-heading font-extrabold text-slate-900 dark:text-white mb-6 leading-tight">
                 Got questions?{' '}
                 <span className="text-gradient">We've got answers.</span>
               </h2>
-              <p className="text-lg text-slate-600 mb-10 leading-relaxed">
+              <p className="text-lg text-slate-600 dark:text-slate-400 mb-10 leading-relaxed">
                 Can't find what you're looking for? Our support team is always ready to help.
               </p>
             </motion.div>
@@ -67,42 +67,18 @@ export default function FAQ() {
             {/* Contact Cards */}
             <div className="space-y-4">
               {[
-                {
-                  icon: <PhoneCall className="w-5 h-5 text-primary-600" />,
-                  label: 'WhatsApp',
-                  value: '+237 6XX XXX XXX',
-                },
-                {
-                  icon: <Mail className="w-5 h-5 text-primary-600" />,
-                  label: 'Email',
-                  value: 'support@heqasolutions.com',
-                },
-                {
-                  icon: <MessageCircle className="w-5 h-5 text-primary-600" />,
-                  label: 'In-App Chat',
-                  value: 'Available 24/7',
-                },
+                { icon: <Mail className="w-5 h-5 text-primary-600" />, label: 'Email', value: 'support@heqasolutions.com' },
+                { icon: <MessageCircle className="w-5 h-5 text-primary-600" />, label: 'WhatsApp', value: '+237 6XX XXX XXX' }
               ].map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all"
-                >
-                  <div className="w-11 h-11 rounded-xl bg-primary-50 flex items-center justify-center flex-shrink-0">
+                <div key={idx} className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 transition-colors">
+                  <div className="w-11 h-11 rounded-xl bg-primary-50 dark:bg-primary-900/10 flex items-center justify-center flex-shrink-0">
                     {item.icon}
                   </div>
                   <div>
-                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                      {item.label}
-                    </p>
-                    <p className="text-sm font-bold text-slate-800">
-                      {item.value}
-                    </p>
+                    <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">{item.label}</p>
+                    <p className="text-sm font-bold text-slate-800 dark:text-slate-200">{item.value}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -112,48 +88,49 @@ export default function FAQ() {
             {faqs.map((faq, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, x: 16 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.05 }}
                 className={`rounded-2xl border transition-all duration-300 ${
                   openIndex === idx
-                    ? 'bg-white border-primary-100 shadow-lg shadow-primary-500/5'
-                    : 'bg-white border-slate-100 hover:border-slate-200'
+                    ? 'bg-white dark:bg-slate-900 border-primary-100 dark:border-primary-900/30 shadow-lg shadow-primary-500/5'
+                    : 'bg-white/50 dark:bg-slate-900/30 border-slate-100 dark:border-slate-800 hover:border-slate-200 dark:hover:border-slate-700'
                 }`}
               >
                 <button
-                  onClick={() =>
-                    setOpenIndex(openIndex === idx ? -1 : idx)
-                  }
+                  onClick={() => setOpenIndex(openIndex === idx ? -1 : idx)}
                   className="w-full text-left p-5 md:p-6 flex items-center justify-between gap-4"
                 >
-                  <span className="font-bold text-slate-900 text-sm md:text-base leading-snug">
+                  <span className={`font-bold text-sm md:text-base leading-snug transition-colors ${
+                    openIndex === idx ? 'text-primary-600 dark:text-primary-400' : 'text-slate-900 dark:text-white'
+                  }`}>
                     {faq.question}
                   </span>
                   <ChevronDown
                     className={`w-5 h-5 flex-shrink-0 transition-transform duration-300 ${
-                      openIndex === idx
-                        ? 'rotate-180 text-primary-600'
-                        : 'text-slate-400'
+                      openIndex === idx ? 'rotate-180 text-primary-600 dark:text-primary-400' : 'text-slate-400'
                     }`}
                   />
                 </button>
 
-                {openIndex === idx && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-5 md:px-6 pb-5 md:pb-6 border-t border-slate-50">
-                      <p className="text-slate-600 leading-relaxed text-sm pt-4">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  </motion.div>
-                )}
+                <AnimatePresence>
+                  {openIndex === idx && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-5 md:px-6 pb-5 md:pb-6 border-t border-slate-50 dark:border-slate-800">
+                        <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm pt-4">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
             ))}
           </div>

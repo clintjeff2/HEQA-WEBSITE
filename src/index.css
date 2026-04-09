@@ -43,8 +43,13 @@ html {
 
 @layer base {
   body {
-    @apply bg-white text-slate-800 antialiased overflow-x-hidden;
+    @apply bg-white text-slate-800 antialiased overflow-x-hidden transition-colors duration-300;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Dark mode body */
+  .dark body {
+    @apply bg-slate-950 text-slate-200;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -57,23 +62,37 @@ html {
   .glass-panel {
     @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
   }
+  .dark .glass-panel {
+    @apply bg-slate-900/70 border-slate-700/50 shadow-black/20;
+  }
+
   .glass-nav {
     @apply bg-white/80 backdrop-blur-lg border-b border-slate-200/50 shadow-sm transition-all;
+  }
+  .dark .glass-nav {
+    @apply bg-slate-950/80 border-slate-800 shadow-lg shadow-black/20;
   }
 
   /* Gradients */
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-accent-500;
   }
-  .text-gradient-gold {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+  .dark .text-gradient {
+    @apply from-primary-400 to-accent-400;
   }
+
   .hero-gradient {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
   }
+  .dark .hero-gradient {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e40af 100%);
+  }
+
   .cta-gradient {
     background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  }
+  .dark .cta-gradient {
+    background: linear-gradient(135deg, #1e40af 0%, #5b21b6 100%);
   }
   .gold-gradient {
     background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);

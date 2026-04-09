@@ -92,12 +92,12 @@ function PricingCard({ plan, index }) {
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
       className={`relative flex flex-col rounded-3xl border p-8 transition-shadow duration-300 ${
         plan.popular
-          ? 'border-primary-200 bg-gradient-to-b from-primary-50/50 to-white shadow-2xl shadow-primary-500/10 md:scale-105 z-10'
-          : 'border-slate-200 bg-white shadow-lg shadow-slate-200/30 hover:shadow-xl'
+          ? 'border-primary-200 dark:border-primary-900/50 bg-gradient-to-b from-primary-50/50 to-white dark:from-primary-900/20 dark:to-slate-900 shadow-2xl shadow-primary-500/10 md:scale-105 z-10'
+          : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 shadow-lg shadow-slate-200/30 dark:shadow-none hover:shadow-xl dark:hover:bg-slate-900 transition-colors'
       }`}
     >
       {/* Glossy overlay */}
-      <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-white/0 via-white/40 to-white/0 opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ transform: "translateZ(1px)" }} />
+      <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-white/0 via-white/40 dark:via-white/10 to-white/0 opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ transform: "translateZ(1px)" }} />
 
       {/* Popular badge */}
       {plan.popular && (
@@ -115,33 +115,33 @@ function PricingCard({ plan, index }) {
 
       {/* Plan Header */}
       <div className="mb-8" style={{ transform: "translateZ(20px)" }}>
-        <div className={`w-12 h-12 rounded-xl ${plan.popular ? 'bg-primary-100 text-primary-600' : 'bg-slate-100 text-slate-600'} flex items-center justify-center mb-4`}>
+        <div className={`w-12 h-12 rounded-xl ${plan.popular ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'} flex items-center justify-center mb-4`}>
           {plan.icon}
         </div>
-        <h3 className="text-xl font-bold text-slate-900 mb-3">
+        <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
           {plan.name}
         </h3>
         <div className="flex items-baseline gap-1.5">
           {plan.currency && (
-            <span className="text-lg font-semibold text-slate-500">
+            <span className="text-lg font-semibold text-slate-500 dark:text-slate-400">
               {plan.currency}
             </span>
           )}
-          <span className="text-4xl font-extrabold font-heading text-slate-900">
+          <span className="text-4xl font-extrabold font-heading text-slate-900 dark:text-white">
             {plan.price}
           </span>
           {plan.period && (
-            <span className="text-slate-500 font-medium text-sm">
+            <span className="text-slate-500 dark:text-slate-400 font-medium text-sm">
               {plan.period}
             </span>
           )}
         </div>
         {plan.yearlyPrice && (
-          <p className="mt-2 text-sm font-medium text-success-600 bg-success-500/10 inline-block px-3 py-1 rounded-full">
+          <p className="mt-2 text-sm font-medium text-success-600 dark:text-success-400 bg-success-500/10 dark:bg-success-900/20 inline-block px-3 py-1 rounded-full">
             Or {plan.yearlyPrice}
           </p>
         )}
-        <p className="mt-3 text-sm text-slate-500">{plan.description}</p>
+        <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">{plan.description}</p>
       </div>
 
       {/* Features */}
@@ -196,10 +196,10 @@ function PricingCard({ plan, index }) {
 
 export default function Pricing() {
   return (
-    <section className="section-padding bg-white relative overflow-hidden" id="pricing">
-      {/* Background blur circles */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-50 rounded-full blur-[120px] -z-10 opacity-50" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-50 rounded-full blur-[120px] -z-10 opacity-50" />
+    <section className="section-padding bg-white dark:bg-slate-950 transition-colors relative overflow-hidden" id="pricing">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-primary-50 dark:bg-primary-900/10 rounded-full blur-[100px] -z-10" />
+      <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-accent-50 dark:bg-accent-900/10 rounded-full blur-[120px] -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -208,16 +208,13 @@ export default function Pricing() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-20"
         >
-          <span className="text-primary-600 font-bold tracking-wider uppercase text-sm flex items-center justify-center gap-2">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold-500"><path d="M12 2L2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-            Simple Pricing
-          </span>
-          <h2 className="mt-3 text-3xl md:text-4xl font-heading font-extrabold text-slate-900">
-            Invest in your <span className="text-gradient">future success</span>
+          <span className="text-primary-600 dark:text-primary-400 font-bold tracking-wider uppercase text-sm">Pricing</span>
+          <h2 className="mt-3 text-3xl md:text-5xl font-heading font-extrabold text-slate-900 dark:text-white">
+            Simple, <span className="text-gradient">fair pricing</span>
           </h2>
-          <p className="mt-5 text-lg text-slate-600">
+          <p className="mt-5 text-lg text-slate-600 dark:text-slate-400">
             Start free, upgrade when you're ready. No hidden fees, just pure academic value. Pay with Mobile Money (MTN, Orange).
           </p>
         </motion.div>

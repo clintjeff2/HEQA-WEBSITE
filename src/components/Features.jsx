@@ -141,38 +141,51 @@ const TiltCard = ({ feature, idx }) => {
 
 export default function Features() {
   return (
-    <section className="section-padding bg-slate-50 border-t border-slate-100 relative overflow-hidden" id="features">
-      {/* Background SVG grid pattern */}
-      <div className="absolute inset-0 z-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, black 1px, transparent 0)', backgroundSize: '32px 32px' }} />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="section-padding bg-white dark:bg-slate-950 transition-colors" id="features">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-20"
         >
-          <span className="text-primary-600 font-bold tracking-wider uppercase text-sm flex items-center justify-center gap-2">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-accent-500"><path d="M12 2L2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-            Powerful Features
-          </span>
-          <h2 className="mt-3 text-3xl md:text-4xl font-heading font-extrabold text-slate-900">
+          <span className="text-primary-600 dark:text-primary-400 font-bold tracking-wider uppercase text-sm">Features</span>
+          <h2 className="mt-3 text-3xl md:text-5xl font-heading font-extrabold text-slate-900 dark:text-white">
             Everything you need to{' '}
-            <span className="text-gradient">ace your exams</span>
+            <span className="text-gradient">succeed</span>
           </h2>
-          <p className="mt-5 text-lg text-slate-600 leading-relaxed">
-            A comprehensive, reliable, and beautiful platform designed
-            specifically to help HND, GCE, and O-Level students crush their
-            exams with confidence.
+          <p className="mt-5 text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+            HEQA Solutions is built specifically for the Cameroonian student,
+            focusing on speed, accuracy, and accessibility.
           </p>
         </motion.div>
 
         {/* Feature Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 perspective-[1000px]">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, idx) => (
-            <TiltCard key={idx} feature={feature} idx={idx} />
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+            >
+              <TiltCard>
+                <div className="p-8 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 h-full hover:border-primary-200 dark:hover:border-primary-800 transition-all duration-300 group">
+                  <div className={`w-14 h-14 rounded-2xl ${feature.bg} ${feature.color} dark:bg-opacity-10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-sm`}>
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              </TiltCard>
+            </motion.div>
           ))}
         </div>
       </div>
