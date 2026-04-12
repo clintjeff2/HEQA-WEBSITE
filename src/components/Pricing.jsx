@@ -90,10 +90,10 @@ function PricingCard({ plan, index }) {
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.12 }}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className={`relative flex flex-col rounded-3xl border p-8 transition-shadow duration-300 ${
+      className={`relative flex flex-col rounded-3xl border p-8 transition-all duration-500 hover:scale-[1.02] ${
         plan.popular
-          ? 'border-primary-200 dark:border-primary-900/50 bg-gradient-to-b from-primary-50/50 to-white dark:from-primary-900/20 dark:to-slate-900 shadow-2xl shadow-primary-500/10 md:scale-105 z-10'
-          : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 shadow-lg shadow-slate-200/30 dark:shadow-none hover:shadow-xl dark:hover:bg-slate-900 transition-colors'
+          ? 'border-primary-200 dark:border-primary-900/50 bg-white dark:bg-slate-900 shadow-2xl shadow-primary-500/10 md:scale-105 z-10'
+          : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-lg shadow-slate-200/30 dark:shadow-none hover:shadow-xl'
       }`}
     >
       {/* Glossy overlay */}
@@ -154,7 +154,7 @@ function PricingCard({ plan, index }) {
             viewport={{ once: true }}
             transition={{ delay: fIdx * 0.05 + index * 0.1 }}
             className={`flex items-start gap-3 text-sm ${
-              feature.included ? 'text-slate-700' : 'text-slate-400'
+              feature.included ? 'text-slate-700 dark:text-slate-300' : 'text-slate-400 dark:text-slate-500'
             }`}
           >
             <div className="mt-0.5">
@@ -231,7 +231,7 @@ export default function Pricing() {
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-16 pt-8 border-t border-slate-100"
+          className="mt-16 pt-8 border-t border-slate-100 dark:border-slate-800"
         >
           <div className="flex flex-wrap justify-center gap-8 md:gap-16">
             {[

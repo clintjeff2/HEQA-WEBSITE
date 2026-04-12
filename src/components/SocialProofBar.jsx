@@ -80,7 +80,7 @@ const stats = [
 
 export default function SocialProofBar() {
   return (
-    <section className="py-12 bg-white relative z-10" id="social-proof">
+    <section className="py-12 bg-white dark:bg-slate-950 transition-colors relative z-10" id="social-proof">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -96,10 +96,10 @@ export default function SocialProofBar() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="flex items-center gap-4 p-5 rounded-2xl bg-slate-50/80 border border-slate-100 hover:border-slate-200 hover:shadow-lg transition-all duration-300 group"
+              className="flex items-center gap-4 p-5 rounded-2xl bg-slate-50/80 dark:bg-slate-900/80 border border-slate-100 dark:border-slate-800 hover:border-slate-200 dark:hover:border-slate-700 hover:shadow-lg transition-all duration-300 group"
             >
               <div
-                className={`w-12 h-12 rounded-xl ${stat.bg} ${stat.color} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}
+                className={`w-12 h-12 rounded-xl ${stat.bg} ${stat.color} dark:bg-opacity-10 dark:bg-slate-800/50 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}
               >
                 {stat.icon}
               </div>
@@ -111,7 +111,7 @@ export default function SocialProofBar() {
                     <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                   )}
                 </div>
-                <div className="text-xs md:text-sm font-medium text-slate-500 mt-0.5">
+                <div className="text-xs md:text-sm font-medium text-slate-500 dark:text-slate-400 mt-0.5">
                   {stat.label}
                 </div>
               </div>

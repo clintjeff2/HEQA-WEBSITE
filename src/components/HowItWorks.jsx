@@ -48,7 +48,7 @@ export default function HowItWorks() {
   const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section ref={sectionRef} className="section-padding bg-white relative overflow-hidden" id="how-it-works">
+    <section ref={sectionRef} className="section-padding bg-white dark:bg-slate-950 transition-colors relative overflow-hidden" id="how-it-works">
       {/* Background dot pattern */}
       <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #1e293b 1px, transparent 0)', backgroundSize: '40px 40px' }} />
       
@@ -65,11 +65,11 @@ export default function HowItWorks() {
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-accent-500"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             Get Started
           </span>
-          <h2 className="mt-3 text-3xl md:text-4xl font-heading font-extrabold text-slate-900">
+          <h2 className="mt-3 text-3xl md:text-4xl font-heading font-extrabold text-slate-900 dark:text-white">
             Start acing your exams in{' '}
             <span className="text-gradient">3 simple steps</span>
           </h2>
-          <p className="mt-5 text-lg text-slate-600">
+          <p className="mt-5 text-lg text-slate-600 dark:text-slate-400">
             No complicated setup. No learning curve. Just download and start studying.
           </p>
         </motion.div>

@@ -24,7 +24,7 @@ function App() {
   });
 
   // Theme logic
-  const [theme, setTheme] = React.useState(localStorage.getItem('theme') || 'light');
+  const [theme, setTheme] = React.useState(localStorage.getItem('theme') || 'dark');
 
   React.useEffect(() => {
     if (theme === 'dark') {

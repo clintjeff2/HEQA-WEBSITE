@@ -262,7 +262,7 @@ export default function Hero() {
                 ease: 'easeInOut',
                 delay: 0.8,
               }}
-              className="absolute -right-4 md:right-0 top-4 bg-white/95 backdrop-blur-xl p-3 rounded-2xl shadow-xl shadow-black/10 flex items-center gap-3 z-30 border border-white"
+              className="absolute -right-4 md:right-0 top-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl p-3 rounded-2xl shadow-xl shadow-black/10 flex items-center gap-3 z-30 border border-white dark:border-slate-800"
             >
               <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center relative overflow-hidden">
                 <motion.div 
@@ -273,10 +273,10 @@ export default function Hero() {
                 <CheckCircle className="w-5 h-5 text-success-600 relative z-10" />
               </div>
               <div>
-                <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">
+                <p className="text-[10px] text-slate-400 dark:text-slate-500 font-semibold uppercase tracking-wider">
                   Accuracy
                 </p>
-                <p className="text-sm font-bold text-slate-800">
+                <p className="text-sm font-bold text-slate-800 dark:text-white">
                   100% Verified
                 </p>
               </div>
@@ -291,16 +291,16 @@ export default function Hero() {
                 ease: 'easeInOut',
                 delay: 2,
               }}
-              className="absolute -left-4 md:left-0 bottom-16 bg-white/95 backdrop-blur-xl p-3 rounded-2xl shadow-xl shadow-black/10 flex items-center gap-3 z-30 border border-white"
+              className="absolute -left-4 md:left-0 bottom-16 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl p-3 rounded-2xl shadow-xl shadow-black/10 flex items-center gap-3 z-30 border border-white dark:border-slate-800"
             >
               <div className="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center relative overflow-hidden">
                 <BookOpen className="w-5 h-5 text-primary-600 relative z-10" />
               </div>
               <div>
-                <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">
+                <p className="text-[10px] text-slate-400 dark:text-slate-500 font-semibold uppercase tracking-wider">
                   Library
                 </p>
-                <p className="text-sm font-bold text-slate-800">
+                <p className="text-sm font-bold text-slate-800 dark:text-white">
                   <motion.span
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -326,7 +326,8 @@ export default function Hero() {
         >
           <path
             d="M0 48L48 42.7C96 37 192 27 288 32C384 37 480 59 576 64C672 69 768 59 864 48C960 37 1056 27 1152 26.7C1248 27 1344 37 1392 42.7L1440 48V80H1392C1344 80 1248 80 1152 80C1056 80 960 80 864 80C768 80 672 80 576 80C480 80 384 80 288 80C192 80 96 80 48 80H0V48Z"
-            fill="white"
+            fill="currentColor"
+            className="text-slate-50 dark:text-slate-950"
           />
         </svg>
       </div>

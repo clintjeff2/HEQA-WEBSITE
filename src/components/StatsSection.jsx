@@ -78,7 +78,7 @@ export default function StatsSection() {
               transition={{ duration: 0.6, delay: stat.delay }}
               className="relative group "
             >
-              <div className="flex flex-col items-center text-center p-6 rounded-3xl transition-all duration-300 hover:bg-slate-50 dark:hover:bg-slate-900 border border-transparent hover:border-slate-100 dark:hover:border-slate-800">
+              <div className="flex flex-col items-center text-center p-6 rounded-3xl transition-all duration-300 hover:bg-white dark:hover:bg-slate-900 border border-transparent hover:border-slate-100 dark:hover:border-slate-800 hover:shadow-xl hover:shadow-slate-200 dark:hover:shadow-none">
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   className={`w-16 h-16 rounded-2xl ${stat.bg} ${stat.color} dark:bg-opacity-10 flex items-center justify-center mb-6 shadow-sm group-hover:shadow-md transition-all duration-300`}
@@ -95,7 +95,7 @@ export default function StatsSection() {
                     )}
                     <span className="text-xl ml-0.5">{stat.suffix}</span>
                   </div>
-                  <div className="text-sm font-bold tracking-widest uppercase text-slate-400 dark:text-slate-500">
+                  <div className="text-sm font-bold tracking-widest uppercase text-slate-500 dark:text-slate-400">
                     {stat.label}
                   </div>
                 </div>

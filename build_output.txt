@@ -1,0 +1,19 @@
+
+> hnd-portal@0.0.0 build
+> vite build
+
+vite v8.0.3 building client environment for production...
+[2Ktransforming...✓ 2141 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                                    2.94 kB │ gzip:   1.10 kB
+dist/assets/Screenshot_20260308_075604_HND Examination Portal.jpg-DdTNMn-f.jpeg  248.09 kB
+dist/assets/Screenshot_20260319_192134_HEQA Solutions.jpg-Dou8bbTg.jpeg          304.52 kB
+dist/assets/Screenshot_20260316_224355_HND Examination Portal.jpg-Ci99u0j8.jpeg  393.41 kB
+dist/assets/Screenshot_20260312_075722_HND Examination Portal.jpg-BXfw6Og8.jpeg  401.57 kB
+dist/assets/Screenshot_20260316_224943_HND Examination Portal.jpg-D0mwnZ1v.jpeg  456.72 kB
+dist/assets/Screenshot_20260319_192150_HEQA Solutions.jpg-C5ZVDPGC.jpeg          521.05 kB
+dist/assets/index-C1RKQjF7.css                                                    74.09 kB │ gzip:  11.03 kB
+dist/assets/index-XlnZcgJm.js                                                    417.77 kB │ gzip: 126.63 kB
+
+✓ built in 841ms
