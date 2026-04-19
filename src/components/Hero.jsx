@@ -1,15 +1,31 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Star, Download, Play, Sparkles, Users, BookOpen, CheckCircle } from 'lucide-react';
-import MagneticWrapper from './MagneticWrapper';
-import mockupImage1 from '../assets/Screenshot_20260316_224355_HND Examination Portal.jpg.jpeg';
-import mockupImage2 from '../assets/Screenshot_20260319_192134_HEQA Solutions.jpg.jpeg';
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  ArrowRight,
+  Star,
+  Download,
+  Play,
+  Sparkles,
+  Users,
+  BookOpen,
+  CheckCircle,
+  Rocket,
+} from "lucide-react";
+import { Link } from "react-router-dom";
+import MagneticWrapper from "./MagneticWrapper";
+import mockupImage1 from "../assets/HEQA NAME SCREEN IMAGES/Premium Homescreen.jpg";
+import mockupImage2 from "../assets/HEQA NAME SCREEN IMAGES/Practice By Paper Screen darkmode Best.jpg";
+import africanStudent1 from "../assets/africa student 1.avif";
+import africanStudent2 from "../assets/africa student 2.jpg";
+import africanStudent3 from "../assets/africa student 3.jpeg";
+import africanStudent4 from "../assets/africa student 4.avif";
+import africanStudent5 from "../assets/africa student 5.avif";
 
 export default function Hero() {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end start"]
+    offset: ["start start", "end start"],
   });
 
   // Parallax transform for background elements and phones
@@ -45,13 +61,16 @@ export default function Hero() {
       <div className="absolute inset-0 bg-primary-900/10 dark:bg-black/40 -z-15" />
 
       {/* Parallax Decorative elements */}
-      <motion.div style={{ y: yBg }} className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+      <motion.div
+        style={{ y: yBg }}
+        className="absolute inset-0 -z-10 overflow-hidden pointer-events-none"
+      >
         <div className="absolute -top-32 -right-32 w-[500px] h-[500px] bg-white/5 rounded-full" />
         <div className="absolute -bottom-48 -left-24 w-[600px] h-[600px] bg-white/5 rounded-full" />
-        
+
         {/* Animated Custom SVG Blob */}
-        <motion.svg 
-          viewBox="0 0 200 200" 
+        <motion.svg
+          viewBox="0 0 200 200"
           xmlns="http://www.w3.org/2000/svg"
           className="absolute top-1/4 left-1/4 w-96 h-96 opacity-10"
           animate={{
@@ -61,24 +80,39 @@ export default function Hero() {
           transition={{
             duration: 20,
             repeat: Infinity,
-            ease: "linear"
+            ease: "linear",
           }}
         >
-          <path fill="#FFFFFF" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,81.3,-46.3C90.8,-33.5,96.8,-18,95.6,-3C94.5,12.1,86.1,26.4,75.9,38.2C65.7,50,53.7,59.3,40.3,66.1C26.9,72.9,12,77.2,-3.1,79C-18.1,80.7,-33.2,79.9,-46.1,72.9C-59,65.8,-69.6,52.5,-75.7,37.8C-81.8,23.1,-83.4,7.1,-80.6,-8.1C-77.8,-23.4,-70.6,-38,-60.1,-50.2C-49.6,-62.4,-35.8,-72.2,-21.3,-76.4C-6.8,-80.6,8.4,-79.1,22.8,-75.4C37.2,-71.7,50.7,-63.8,44.7,-76.4Z" transform="translate(100 100) scale(1.1)" />
+          <path
+            fill="#FFFFFF"
+            d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,81.3,-46.3C90.8,-33.5,96.8,-18,95.6,-3C94.5,12.1,86.1,26.4,75.9,38.2C65.7,50,53.7,59.3,40.3,66.1C26.9,72.9,12,77.2,-3.1,79C-18.1,80.7,-33.2,79.9,-46.1,72.9C-59,65.8,-69.6,52.5,-75.7,37.8C-81.8,23.1,-83.4,7.1,-80.6,-8.1C-77.8,-23.4,-70.6,-38,-60.1,-50.2C-49.6,-62.4,-35.8,-72.2,-21.3,-76.4C-6.8,-80.6,8.4,-79.1,22.8,-75.4C37.2,-71.7,50.7,-63.8,44.7,-76.4Z"
+            transform="translate(100 100) scale(1.1)"
+          />
         </motion.svg>
 
         <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white/20 rounded-full animate-float" />
         <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-white/15 rounded-full animate-float-delayed" />
         <div className="absolute text-white/5 top-1/2 right-1/4 w-12 h-12 rotate-45 animate-pulse-ring">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4"></path></svg>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 4v16m8-8H4"
+            ></path>
+          </svg>
         </div>
         <div className="absolute bottom-1/4 left-1/3 w-2 h-2 bg-white/10 rounded-full animate-float" />
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage:
-              'linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
+              "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
           }}
         />
       </motion.div>
@@ -95,10 +129,10 @@ export default function Hero() {
             {/* Trust badge */}
             <motion.div
               variants={itemVariants}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium mb-8 hover:bg-white/20 transition-colors cursor-default"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold-400/20 backdrop-blur-sm border border-gold-400/30 text-gold-400 text-sm font-bold mb-8 cursor-default"
             >
-              <Sparkles className="w-4 h-4 text-gold-400" />
-              <span>#1 Exam Prep App in Cameroon</span>
+              <Rocket className="w-4 h-4" />
+              <span>Launching May 20, 2026 — Join the Waitlist!</span>
             </motion.div>
 
             {/* Headline */}
@@ -106,16 +140,16 @@ export default function Hero() {
               variants={itemVariants}
               className="text-4xl sm:text-5xl lg:text-6xl xl:text-[4rem] font-heading font-extrabold leading-[1.1] mb-6 text-white"
             >
-              Ace Your Exams with{' '}
+              Ace Your Exams with{" "}
               <span className="text-gold-400 relative inline-block">
                 50,000+
-                <motion.span 
+                <motion.span
                   className="absolute -bottom-2 left-0 w-full h-1 bg-gold-400 rounded-full"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ delay: 1, duration: 0.8 }}
                 />
-              </span>{' '}
+              </span>{" "}
               Past Questions
             </motion.h1>
 
@@ -124,9 +158,9 @@ export default function Hero() {
               variants={itemVariants}
               className="text-lg md:text-xl text-blue-100/80 mb-10 leading-relaxed max-w-xl"
             >
-              The ultimate exam prep app for Cameroon students.{' '}
-              <span className="text-white font-medium">HND</span>,{' '}
-              <span className="text-white font-medium">GCE A-Level</span>,{' '}
+              The ultimate exam prep app for Cameroon students.{" "}
+              <span className="text-white font-medium">HND</span>,{" "}
+              <span className="text-white font-medium">GCE A-Level</span>,{" "}
               <span className="text-white font-medium">GCE O-Level</span> — all
               past papers, solutions, and practice in your pocket.
             </motion.p>
@@ -134,25 +168,29 @@ export default function Hero() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
               <MagneticWrapper strength={0.4}>
-                <motion.button
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex justify-center items-center gap-2.5 bg-white text-primary-700 hover:bg-blue-50 px-8 py-4 rounded-full text-base font-bold transition-all shadow-xl shadow-black/10 group h-full"
-                >
-                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L14.12 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.2l2.807 1.626a1 1 0 010 1.734l-2.807 1.626-2.536-2.486 2.536-2.5zM5.864 2.658L16.8 8.99l-2.301 2.301-8.635-8.633z"/></svg>
-                  Download for Android
-                </motion.button>
+                <Link to="/waitlist">
+                  <motion.button
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="inline-flex justify-center items-center gap-2.5 bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-full text-base font-bold transition-all shadow-xl shadow-gold-500/20 group h-full"
+                  >
+                    <Rocket className="w-5 h-5" />
+                    Join the Waiting List
+                  </motion.button>
+                </Link>
               </MagneticWrapper>
 
               <MagneticWrapper strength={0.4}>
-                <motion.button
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex justify-center items-center gap-2.5 bg-white/10 hover:bg-white/20 text-white border border-white/25 px-8 py-4 rounded-full text-base font-semibold transition-all backdrop-blur-sm group h-full"
-                >
-                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                  Download for iOS
-                </motion.button>
+                <Link to="/features">
+                  <motion.button
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="inline-flex justify-center items-center gap-2.5 bg-white/10 hover:bg-white/20 text-white border border-white/25 px-8 py-4 rounded-full text-base font-semibold transition-all backdrop-blur-sm group h-full"
+                  >
+                    Explore Features
+                    <ArrowRight className="w-5 h-5" />
+                  </motion.button>
+                </Link>
               </MagneticWrapper>
             </div>
 
@@ -163,14 +201,20 @@ export default function Hero() {
             >
               <div className="flex items-center gap-2">
                 <div className="flex -space-x-2.5">
-                  {[1, 2, 3, 4, 5].map((i) => (
+                  {[
+                    africanStudent1,
+                    africanStudent2,
+                    africanStudent3,
+                    africanStudent4,
+                    africanStudent5,
+                  ].map((src, i) => (
                     <motion.div
                       key={i}
                       whileHover={{ y: -5, scale: 1.1, zIndex: 10 }}
                       className="w-9 h-9 rounded-full border-2 border-primary-800 bg-primary-300 flex items-center justify-center overflow-hidden relative cursor-pointer"
                     >
                       <img
-                        src={`https://i.pravatar.cc/80?img=${i + 10}`}
+                        src={src}
                         alt="Student"
                         className="w-full h-full object-cover"
                       />
@@ -210,8 +254,8 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5, ease: 'easeOut' }}
-            className="relative lg:ml-auto w-full max-w-[420px] mx-auto h-[520px] md:h-[600px] perspective-[1000px] transform-style-3d"
+            transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+            className="relative lg:ml-auto w-full max-w-[520px] mx-auto h-[580px] md:h-[680px] perspective-[1000px] transform-style-3d"
           >
             {/* Glow behind phones */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[100%] bg-white/10 rounded-full blur-[80px]" />
@@ -220,8 +264,8 @@ export default function Hero() {
             <motion.div
               style={{ y: yPhone1 }}
               animate={{ rotate: [-6, -4, -6] }}
-              transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
-              className="absolute left-0 top-8 w-[200px] md:w-[220px] z-20"
+              transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+              className="absolute left-0 top-8 w-[230px] md:w-[260px] z-20"
             >
               <div className="phone-frame shadow-[0_25px_60px_rgba(0,0,0,0.3)] transition-transform duration-300 hover:scale-[1.02]">
                 <img
@@ -239,10 +283,10 @@ export default function Hero() {
               transition={{
                 repeat: Infinity,
                 duration: 7,
-                ease: 'easeInOut',
+                ease: "easeInOut",
                 delay: 1.5,
               }}
-              className="absolute right-0 top-20 w-[200px] md:w-[220px] z-10"
+              className="absolute right-0 top-20 w-[230px] md:w-[260px] z-10"
             >
               <div className="phone-frame shadow-[0_25px_60px_rgba(0,0,0,0.3)] transition-transform duration-300 hover:scale-[1.02]">
                 <img
@@ -259,15 +303,15 @@ export default function Hero() {
               transition={{
                 repeat: Infinity,
                 duration: 4,
-                ease: 'easeInOut',
+                ease: "easeInOut",
                 delay: 0.8,
               }}
               className="absolute -right-4 md:right-0 top-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl p-3 rounded-2xl shadow-xl shadow-black/10 flex items-center gap-3 z-30 border border-white dark:border-slate-800"
             >
               <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center relative overflow-hidden">
-                <motion.div 
+                <motion.div
                   className="absolute inset-0 bg-success-400 opacity-20"
-                  animate={{ scale: [1, 1.5, 1] }} 
+                  animate={{ scale: [1, 1.5, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
                 <CheckCircle className="w-5 h-5 text-success-600 relative z-10" />
@@ -288,7 +332,7 @@ export default function Hero() {
               transition={{
                 repeat: Infinity,
                 duration: 4.5,
-                ease: 'easeInOut',
+                ease: "easeInOut",
                 delay: 2,
               }}
               className="absolute -left-4 md:left-0 bottom-16 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl p-3 rounded-2xl shadow-xl shadow-black/10 flex items-center gap-3 z-30 border border-white dark:border-slate-800"
@@ -307,7 +351,8 @@ export default function Hero() {
                     transition={{ delay: 2.5, duration: 1 }}
                   >
                     50,000+
-                  </motion.span> Questions
+                  </motion.span>{" "}
+                  Questions
                 </p>
               </div>
             </motion.div>
