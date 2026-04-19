@@ -1,39 +1,53 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { HelpCircle, ChevronDown, PhoneCall, Mail, MessageCircle } from 'lucide-react';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  HelpCircle,
+  ChevronDown,
+  PhoneCall,
+  Mail,
+  MessageCircle,
+} from "lucide-react";
 
 const faqs = [
   {
-    question: 'Is HEQA Solutions free to use?',
-    answer: "Yes! HEQA has a generous free plan that gives you access to the last 2 years of past questions with basic answers. Premium unlocks offline mode, detailed solutions, analytics, and an ad-free experience — starting at just 2,000 FCFA/month.",
+    question: "Is HEQA Solutions free to use?",
+    answer:
+      "Yes! HEQA has a generous free plan that gives you access to the last 2 years of past questions with basic answers. Premium unlocks offline mode, detailed solutions, analytics, and an ad-free experience — starting at just 2,000 FCFA/month.",
   },
   {
-    question: 'Is the app available on both Android and iOS?',
-    answer: "Yes! HEQA Solutions is available on both Android (Google Play Store) and iOS (App Store). Download it on whichever device you prefer and start studying right away.",
+    question: "Is the app available on both Android and iOS?",
+    answer:
+      "Yes! HEQA Solutions is available on both Android (Google Play Store) and iOS (App Store). Download it on whichever device you prefer and start studying right away.",
   },
   {
-    question: 'Do I need internet to study?',
-    answer: "With the free plan, yes — you need an internet connection. But with Premium, you can download all your papers and study 100% offline. Perfect for areas with poor connectivity or during power cuts.",
+    question: "Do I need internet to study?",
+    answer:
+      "With the free plan, yes — you need an internet connection. But with Premium, you can download all your papers and study 100% offline. Perfect for areas with poor connectivity or during power cuts.",
   },
   {
-    question: 'How accurate are the answers provided?',
-    answer: "Every solution in HEQA is vetted by accredited HND lecturers and subject matter experts. We take accuracy extremely seriously — our platform maintains a 100% verification rate on all published solutions.",
+    question: "How accurate are the answers provided?",
+    answer:
+      "Every solution in HEQA is vetted by accredited HND lecturers and subject matter experts. We take accuracy extremely seriously — our platform maintains a 100% verification rate on all published solutions.",
   },
   {
-    question: 'Which exams does HEQA cover?',
-    answer: "HEQA currently covers HND past questions across all departments (Engineering, Accountancy, Computer Science, Business, and more). We're expanding to include GCE Advanced Level and GCE Ordinary Level past papers.",
+    question: "Which exams does HEQA cover?",
+    answer:
+      "HEQA currently covers HND past questions across all departments (Engineering, Accountancy, Computer Science, Business, and more). We're expanding to include GCE Advanced Level and GCE Ordinary Level past papers.",
   },
   {
-    question: 'How do I pay for Premium?',
-    answer: "We accept MTN Mobile Money and Orange Mobile Money — the most convenient payment methods in Cameroon. You can subscribe monthly (2,000 FCFA) or yearly (15,000 FCFA — save 37%). Payment is processed securely within the app.",
+    question: "How do I pay for Premium?",
+    answer:
+      "We accept MTN Mobile Money and Orange Mobile Money — the most convenient payment methods in Cameroon. You can subscribe monthly (2,000 FCFA) or yearly (15,000 FCFA — save 37%). Payment is processed securely within the app.",
   },
   {
-    question: 'Can my school get bulk Premium access?',
-    answer: "Absolutely! We offer institutional plans for schools, polytechnics, and coaching centers with bulk discounts, admin dashboards, and student analytics. Contact us at partnerships@heqasolutions.com to discuss your needs.",
+    question: "Can my school get bulk Premium access?",
+    answer:
+      "Absolutely! We offer institutional plans for schools, polytechnics, and coaching centers with bulk discounts and custom pricing. Contact us at info@heqasolutions.com or WhatsApp +237 690 055 252 to discuss your needs.",
   },
   {
-    question: 'Is my data safe with HEQA?',
-    answer: "Yes. We take your privacy seriously. Your study data is encrypted and stored securely using industry-standard infrastructure. We never sell your data to third parties. Read our full Privacy Policy for details.",
+    question: "Is my data safe with HEQA?",
+    answer:
+      "Yes. We take your privacy seriously. Your study data is encrypted and stored securely using industry-standard infrastructure. We never sell your data to third parties. Read our full Privacy Policy for details.",
   },
 ];
 
@@ -41,10 +55,12 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section className="section-padding bg-white dark:bg-slate-950 transition-colors relative overflow-hidden" id="faq">
+    <section
+      className="section-padding bg-white dark:bg-slate-950 transition-colors relative overflow-hidden"
+      id="faq"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
-
           {/* Left: Header + Contact */}
           <div className="lg:col-span-2">
             <motion.div
@@ -56,27 +72,43 @@ export default function FAQ() {
                 FAQ
               </span>
               <h2 className="mt-3 text-3xl md:text-4xl font-heading font-extrabold text-slate-900 dark:text-white mb-6 leading-tight">
-                Got questions?{' '}
+                Got questions?{" "}
                 <span className="text-gradient">We've got answers.</span>
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-400 mb-10 leading-relaxed">
-                Can't find what you're looking for? Our support team is always ready to help.
+                Can't find what you're looking for? Our support team is always
+                ready to help.
               </p>
             </motion.div>
 
             {/* Contact Cards */}
             <div className="space-y-4">
               {[
-                { icon: <Mail className="w-5 h-5 text-primary-600" />, label: 'Email', value: 'support@heqasolutions.com' },
-                { icon: <MessageCircle className="w-5 h-5 text-primary-600" />, label: 'WhatsApp', value: '+237 6XX XXX XXX' }
+                {
+                  icon: <Mail className="w-5 h-5 text-primary-600" />,
+                  label: "Email",
+                  value: "info@heqasolutions.com",
+                },
+                {
+                  icon: <MessageCircle className="w-5 h-5 text-primary-600" />,
+                  label: "WhatsApp",
+                  value: "+237 690 055 252",
+                },
               ].map((item, idx) => (
-                <div key={idx} className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 transition-colors">
+                <div
+                  key={idx}
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 transition-colors"
+                >
                   <div className="w-11 h-11 rounded-xl bg-primary-50 dark:bg-primary-900/10 flex items-center justify-center flex-shrink-0">
                     {item.icon}
                   </div>
                   <div>
-                    <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">{item.label}</p>
-                    <p className="text-sm font-bold text-slate-800 dark:text-slate-200">{item.value}</p>
+                    <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">
+                      {item.label}
+                    </p>
+                    <p className="text-sm font-bold text-slate-800 dark:text-slate-200">
+                      {item.value}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -94,22 +126,28 @@ export default function FAQ() {
                 transition={{ delay: idx * 0.05 }}
                 className={`rounded-2xl border transition-all duration-300 ${
                   openIndex === idx
-                    ? 'bg-white dark:bg-slate-900 border-primary-100 dark:border-primary-900/30 shadow-lg shadow-primary-500/5'
-                    : 'bg-white/50 dark:bg-slate-900/30 border-slate-100 dark:border-slate-800 hover:border-slate-200 dark:hover:border-slate-700'
+                    ? "bg-white dark:bg-slate-900 border-primary-100 dark:border-primary-900/30 shadow-lg shadow-primary-500/5"
+                    : "bg-white/50 dark:bg-slate-900/30 border-slate-100 dark:border-slate-800 hover:border-slate-200 dark:hover:border-slate-700"
                 }`}
               >
                 <button
                   onClick={() => setOpenIndex(openIndex === idx ? -1 : idx)}
                   className="w-full text-left p-5 md:p-6 flex items-center justify-between gap-4"
                 >
-                  <span className={`font-bold text-sm md:text-base leading-snug transition-colors ${
-                    openIndex === idx ? 'text-primary-600 dark:text-primary-400' : 'text-slate-900 dark:text-white'
-                  }`}>
+                  <span
+                    className={`font-bold text-sm md:text-base leading-snug transition-colors ${
+                      openIndex === idx
+                        ? "text-primary-600 dark:text-primary-400"
+                        : "text-slate-900 dark:text-white"
+                    }`}
+                  >
                     {faq.question}
                   </span>
                   <ChevronDown
                     className={`w-5 h-5 flex-shrink-0 transition-transform duration-300 ${
-                      openIndex === idx ? 'rotate-180 text-primary-600 dark:text-primary-400' : 'text-slate-400'
+                      openIndex === idx
+                        ? "rotate-180 text-primary-600 dark:text-primary-400"
+                        : "text-slate-400"
                     }`}
                   />
                 </button>
@@ -118,7 +156,7 @@ export default function FAQ() {
                   {openIndex === idx && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
+                      animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
