@@ -1,9 +1,19 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 import {
-  X, Check, Search, FileQuestion, DollarSign, WifiOff,
-  BookOpen, Brain, Smartphone, Globe
-} from 'lucide-react';
+  X,
+  Check,
+  Search,
+  FileQuestion,
+  DollarSign,
+  WifiOff,
+  BookOpen,
+  Brain,
+  Smartphone,
+  Globe,
+  ArrowRight,
+  Zap,
+} from "lucide-react";
 
 const problems = [
   {
@@ -45,143 +55,147 @@ const solutions = [
 
 export default function ProblemSolution() {
   return (
-    <section className="section-padding bg-slate-50 dark:bg-slate-900 transition-colors relative overflow-hidden" id="problem-solution">
-      {/* SVG wave top decoration */}
-      <div className="absolute top-0 left-0 right-0 pointer-events-none -translate-y-1">
-        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full" preserveAspectRatio="none">
-          <path d="M0 60V30c120-20 240-30 360-25s240 25 360 30 240-5 360-15 240-10 360 0V60H0z" fill="currentColor" className="text-slate-50 dark:text-slate-900"/>
-        </svg>
+    <section
+      className="relative py-28 lg:py-36 overflow-hidden"
+      id="problem-solution"
+    >
+      {/* Split background */}
+      <div className="absolute inset-0 grid md:grid-cols-2">
+        <div className="bg-slate-50 dark:bg-slate-900" />
+        <div className="bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800" />
+      </div>
+      {/* Subtle diagonal */}
+      <div className="hidden md:block absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-32">
+          <svg
+            className="h-full w-full"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+          >
+            <polygon
+              points="0,0 100,0 60,100 0,100"
+              className="fill-slate-50 dark:fill-slate-900"
+            />
+            <polygon
+              points="100,0 100,100 60,100"
+              className="fill-primary-600 dark:fill-primary-700"
+            />
+          </svg>
+        </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Badge */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center mb-20"
         >
-          <span className="text-primary-600 dark:text-primary-400 font-bold tracking-wider uppercase text-sm flex items-center justify-center gap-2">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-danger-500"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            The Problem & Our Solution
-          </span>
-          <h2 className="mt-3 text-3xl md:text-4xl font-heading font-extrabold text-slate-900 dark:text-white">
-            Exam prep in Cameroon is{' '}
-            <span className="text-danger-500">broken</span>. We{' '}
-            <span className="text-gradient">fixed it</span>.
-          </h2>
+          <div className="inline-flex items-center gap-2 bg-white dark:bg-slate-800 px-5 py-2.5 rounded-full shadow-lg border border-slate-100 dark:border-slate-700">
+            <Zap className="w-4 h-4 text-gold-500" />
+            <span className="text-sm font-bold text-slate-700 dark:text-slate-300 tracking-wide uppercase">
+              Why HEQA Exists
+            </span>
+          </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid md:grid-cols-2 gap-0 lg:gap-20 items-stretch">
           {/* Problems */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="relative"
+            className="pb-16 md:pb-0 md:pr-16"
           >
-            <div className="p-8 md:p-10 rounded-3xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 h-full hover:shadow-xl transition-all duration-500">
-              <div className="flex items-center gap-3 mb-8">
-                <motion.div
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                  className="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/20 flex items-center justify-center"
-                >
-                  <X className="w-5 h-5 text-danger-500" />
-                </motion.div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+            <div className="flex items-center gap-4 mb-10">
+              <div className="w-14 h-14 rounded-2xl bg-danger-500/10 flex items-center justify-center">
+                <X className="w-7 h-7 text-danger-500" />
+              </div>
+              <div>
+                <p className="text-xs font-bold tracking-[0.2em] uppercase text-danger-500 mb-1">
+                  The Problem
+                </p>
+                <h3 className="text-2xl lg:text-3xl font-heading font-extrabold text-slate-900 dark:text-white">
                   Without HEQA
                 </h3>
               </div>
-              <div className="space-y-5">
-                {problems.map((item, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.12, duration: 0.5 }}
-                    className="flex items-start gap-4 group"
-                  >
-                    <motion.div
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      className="w-10 h-10 rounded-xl bg-red-50 dark:bg-red-900/10 text-danger-400 flex items-center justify-center flex-shrink-0 group-hover:bg-red-100 dark:group-hover:bg-red-900/20 transition-colors"
-                    >
-                      {item.icon}
-                    </motion.div>
-                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed pt-2">
-                      {item.text}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
+            </div>
+            <div className="space-y-5">
+              {problems.map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="group flex items-start gap-5 p-5 rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200/60 dark:border-slate-700/60 hover:border-danger-300 dark:hover:border-danger-800 transition-all duration-300 hover:shadow-lg"
+                >
+                  <div className="w-11 h-11 rounded-xl bg-danger-50 dark:bg-danger-900/20 text-danger-500 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    {item.icon}
+                  </div>
+                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed font-medium pt-2">
+                    {item.text}
+                  </p>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
 
           {/* Solutions */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="relative"
+            className="pt-16 md:pt-0 md:pl-16"
           >
-            <div className="p-8 md:p-10 rounded-3xl bg-gradient-to-br from-primary-600 to-primary-700 border border-primary-500 h-full shadow-xl shadow-primary-600/20 hover:shadow-2xl hover:shadow-primary-600/30 transition-shadow duration-500 relative overflow-hidden">
-              {/* Decorative SVG inside solution card */}
-              <svg className="absolute top-0 right-0 w-40 h-40 text-white/5 pointer-events-none" viewBox="0 0 200 200" fill="currentColor">
-                <path d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,81.3,-46.3C90.8,-33.5,96.8,-18,95.6,-3C94.5,12.1,86.1,26.4,75.9,38.2C65.7,50,53.7,59.3,40.3,66.1C26.9,72.9,12,77.2,-3.1,79C-18.1,80.7,-33.2,79.9,-46.1,72.9C-59,65.8,-69.6,52.5,-75.7,37.8C-81.8,23.1,-83.4,7.1,-80.6,-8.1C-77.8,-23.4,-70.6,-38,-60.1,-50.2C-49.6,-62.4,-35.8,-72.2,-21.3,-76.4C-6.8,-80.6,8.4,-79.1,22.8,-75.4C37.2,-71.7,50.7,-63.8,44.7,-76.4Z" transform="translate(150 50) scale(0.8)" />
-              </svg>
-
-              <div className="flex items-center gap-3 mb-8 relative">
-                <motion.div
-                  animate={{ scale: [1, 1.15, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center"
-                >
-                  <Check className="w-5 h-5 text-white" />
-                </motion.div>
-                <h3 className="text-xl font-bold text-white">
+            <div className="flex items-center gap-4 mb-10">
+              <div className="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center">
+                <Check className="w-7 h-7 text-white" />
+              </div>
+              <div>
+                <p className="text-xs font-bold tracking-[0.2em] uppercase text-gold-400 mb-1">
+                  The Solution
+                </p>
+                <h3 className="text-2xl lg:text-3xl font-heading font-extrabold text-white">
                   With HEQA Solutions
                 </h3>
               </div>
-              <div className="space-y-5 relative">
-                {solutions.map((item, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.12 + 0.2, duration: 0.5 }}
-                    className="flex items-start gap-4 group"
-                  >
-                    <motion.div
-                      whileHover={{ scale: 1.1, rotate: -5 }}
-                      className="w-10 h-10 rounded-xl bg-white/15 text-white flex items-center justify-center flex-shrink-0 group-hover:bg-white/25 transition-colors"
-                    >
-                      {item.icon}
-                    </motion.div>
-                    <p className="text-blue-100 leading-relaxed pt-2">
-                      {item.text}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
+            </div>
+            <div className="space-y-5">
+              {solutions.map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 + 0.2 }}
+                  className="group flex items-start gap-5 p-5 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 hover:bg-white/15 hover:border-white/20 transition-all duration-300"
+                >
+                  <div className="w-11 h-11 rounded-xl bg-white/15 text-white flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    {item.icon}
+                  </div>
+                  <p className="text-blue-100 leading-relaxed font-medium pt-2">
+                    {item.text}
+                  </p>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>
 
-        {/* Connecting arrow between sections */}
+        {/* Center connector */}
         <motion.div
           initial={{ opacity: 0, scale: 0 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.5, type: 'spring' }}
-          className="hidden md:flex justify-center -mt-6 relative z-10"
+          transition={{ delay: 0.6, type: "spring" }}
+          className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
         >
-          <div className="w-14 h-14 rounded-full bg-white dark:bg-slate-950 shadow-xl border border-slate-100 dark:border-slate-800 flex items-center justify-center">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-600 dark:text-primary-400"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <div className="w-16 h-16 rounded-full bg-white dark:bg-slate-900 shadow-2xl border-4 border-gold-500 flex items-center justify-center">
+            <ArrowRight className="w-6 h-6 text-gold-500" />
           </div>
         </motion.div>
       </div>
