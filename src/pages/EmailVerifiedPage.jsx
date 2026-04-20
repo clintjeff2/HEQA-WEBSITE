@@ -79,7 +79,7 @@ export default function EmailVerifiedPage() {
             textAlign: "center",
           }}
         >
-          <img
+          {/* <img
             src="/heqa-logo-transparent.png"
             alt="HEQA Solutions"
             style={{
@@ -91,7 +91,7 @@ export default function EmailVerifiedPage() {
               marginBottom: 12,
               objectFit: "contain",
             }}
-          />
+          /> */}
           <div
             style={{
               fontSize: 18,
