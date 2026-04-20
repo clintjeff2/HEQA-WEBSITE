@@ -2,13 +2,13 @@ import { initializeApp, getApps } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDVlbUDKvKwILmNr8Y2WUyUycLjMiMC5Dk",
-  authDomain: "heqa-solutions.firebaseapp.com",
-  projectId: "heqa-solutions",
-  storageBucket: "heqa-solutions.firebasestorage.app",
-  messagingSenderId: "221296346927",
-  appId: "1:221296346927:web:97ddcbf21542d4bacc83da",
-  measurementId: "G-P26YBBVSL2",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 const app =
@@ -16,3 +16,4 @@ const app =
 
 export const db = getFirestore(app);
 export default app;
+
