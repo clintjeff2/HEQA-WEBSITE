@@ -17,6 +17,7 @@ import PrivacyPage from "./pages/PrivacyPage";
 import TermsPage from "./pages/TermsPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import WaitingListPage from "./pages/WaitingListPage";
+import EmailVerifiedPage from "./pages/EmailVerifiedPage";
 
 function App() {
   const { scrollYProgress } = useScroll();
@@ -68,6 +69,7 @@ function App() {
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/waitlist" element={<WaitingListPage />} />
+          <Route path="/verified" element={<EmailVerifiedPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
