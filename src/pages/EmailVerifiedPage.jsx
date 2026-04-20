@@ -55,14 +55,16 @@ export default function EmailVerifiedPage() {
         justifyContent: "center",
         background: "linear-gradient(135deg, #EFF6FF 0%, #F0FDF4 100%)",
         padding: "24px 16px",
-        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+        fontFamily:
+          "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
       }}
     >
       <div
         style={{
           background: "#FFFFFF",
           borderRadius: "24px",
-          boxShadow: "0 20px 60px rgba(0,0,0,0.10), 0 4px 16px rgba(37,99,235,0.08)",
+          boxShadow:
+            "0 20px 60px rgba(0,0,0,0.10), 0 4px 16px rgba(37,99,235,0.08)",
           maxWidth: "480px",
           width: "100%",
           overflow: "hidden",
@@ -71,7 +73,8 @@ export default function EmailVerifiedPage() {
         {/* Header */}
         <div
           style={{
-            background: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 60%, #1E40AF 100%)",
+            background:
+              "linear-gradient(135deg, #2563EB 0%, #1D4ED8 60%, #1E40AF 100%)",
             padding: "32px 40px 28px",
             textAlign: "center",
           }}
@@ -141,7 +144,8 @@ export default function EmailVerifiedPage() {
               margin: "0 0 32px",
             }}
           >
-            Your email address has been verified successfully. You can now return to the HEQA app and start practising!
+            Your email address has been verified successfully. You can now
+            return to the HEQA app and start practising!
           </p>
 
           {/* Open App CTA */}
@@ -177,11 +181,26 @@ export default function EmailVerifiedPage() {
                 textAlign: "left",
               }}
             >
-              <p style={{ fontSize: 13, color: "#475569", margin: "0 0 10px", fontWeight: 600 }}>
+              <p
+                style={{
+                  fontSize: 13,
+                  color: "#475569",
+                  margin: "0 0 10px",
+                  fontWeight: 600,
+                }}
+              >
                 📱 App didn&apos;t open?
               </p>
-              <p style={{ fontSize: 13, color: "#64748B", margin: "0 0 12px", lineHeight: 1.5 }}>
-                Make sure HEQA is installed on your device, then tap the button above again.
+              <p
+                style={{
+                  fontSize: 13,
+                  color: "#64748B",
+                  margin: "0 0 12px",
+                  lineHeight: 1.5,
+                }}
+              >
+                Make sure HEQA is installed on your device, then tap the button
+                above again.
               </p>
               <div style={{ display: "flex", gap: 8 }}>
                 <a
@@ -216,7 +235,7 @@ export default function EmailVerifiedPage() {
                     display: "block",
                   }}
                 >
-                   App Store
+                  App Store
                 </a>
               </div>
             </div>
@@ -231,7 +250,9 @@ export default function EmailVerifiedPage() {
             }}
           >
             Already in the app? Tap{" "}
-            <strong style={{ color: "#64748B" }}>"I've verified my email"</strong>{" "}
+            <strong style={{ color: "#64748B" }}>
+              "I've verified my email"
+            </strong>{" "}
             on the verification screen.
           </p>
         </div>
