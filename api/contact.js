@@ -182,8 +182,8 @@ export default async function handler(req, res) {
     ]);
 
     if (!internalRes.ok) {
-      const err = await internalRes.json();
-      console.error("Resend internal error:", err);
+      const errText = await internalRes.text();
+      console.error("Resend internal error:", internalRes.status, errText);
       return res
         .status(502)
         .json({ error: "Failed to send message. Please try again." });
@@ -191,7 +191,7 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ success: true });
   } catch (err) {
-    console.error("Contact handler error:", err);
-    return res.status(500).json({ error: "An unexpected error occurred." });
+    console.error("Contact handler error:", err?.message ?? err);
+    return res.status(500).json({ error: "An unexpected error occurred. Please try WhatsApp or email us directly." });
   }
 }
