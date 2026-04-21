@@ -192,6 +192,11 @@ export default async function handler(req, res) {
     return res.status(200).json({ success: true });
   } catch (err) {
     console.error("Contact handler error:", err?.message ?? err);
-    return res.status(500).json({ error: "An unexpected error occurred. Please try WhatsApp or email us directly." });
+    return res
+      .status(500)
+      .json({
+        error:
+          "An unexpected error occurred. Please try WhatsApp or email us directly.",
+      });
   }
 }
