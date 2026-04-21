@@ -34,8 +34,17 @@ export default function ContactPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Something went wrong.");
+      const text = await res.text();
+      let data = {};
+      try {
+        data = JSON.parse(text);
+      } catch {
+        /* non-JSON response */
+      }
+      if (!res.ok)
+        throw new Error(
+          data.error || `Server error (${res.status}). Please try again.`,
+        );
       setStatus("success");
     } catch (err) {
       setErrorMsg(
