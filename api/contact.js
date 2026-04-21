@@ -6,7 +6,9 @@ export default async function handler(req, res) {
   const { name, email, subject, message } = req.body || {};
 
   if (!name || !email || !message) {
-    return res.status(400).json({ error: "Name, email, and message are required." });
+    return res
+      .status(400)
+      .json({ error: "Name, email, and message are required." });
   }
 
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
@@ -182,7 +184,9 @@ export default async function handler(req, res) {
     if (!internalRes.ok) {
       const err = await internalRes.json();
       console.error("Resend internal error:", err);
-      return res.status(502).json({ error: "Failed to send message. Please try again." });
+      return res
+        .status(502)
+        .json({ error: "Failed to send message. Please try again." });
     }
 
     return res.status(200).json({ success: true });

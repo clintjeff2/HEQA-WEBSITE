@@ -76,9 +76,21 @@ export default function Footer() {
             </p>
             <div className="flex gap-4">
               {[
-                { Icon: Facebook, href: "https://web.facebook.com/people/HEQA-Solutions/61570846181534/", label: "Facebook" },
-                { Icon: Instagram, href: "https://www.instagram.com/heqasolutions", label: "Instagram" },
-                { Icon: TikTok, href: "https://www.tiktok.com/@heqasolutions", label: "TikTok" },
+                {
+                  Icon: Facebook,
+                  href: "https://web.facebook.com/people/HEQA-Solutions/61570846181534/",
+                  label: "Facebook",
+                },
+                {
+                  Icon: Instagram,
+                  href: "https://www.instagram.com/heqasolutions",
+                  label: "Instagram",
+                },
+                {
+                  Icon: TikTok,
+                  href: "https://www.tiktok.com/@heqasolutions",
+                  label: "TikTok",
+                },
               ].map(({ Icon, href, label }) => (
                 <motion.a
                   key={label}

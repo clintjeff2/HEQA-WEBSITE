@@ -38,7 +38,9 @@ export default function ContactPage() {
       if (!res.ok) throw new Error(data.error || "Something went wrong.");
       setStatus("success");
     } catch (err) {
-      setErrorMsg(err.message || "Failed to send. Please try WhatsApp or email directly.");
+      setErrorMsg(
+        err.message || "Failed to send. Please try WhatsApp or email directly.",
+      );
       setStatus("error");
     }
   };
@@ -228,17 +230,27 @@ export default function ContactPage() {
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      transition={{ type: "spring", stiffness: 260, damping: 18 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 18,
+                      }}
                       className="w-24 h-24 rounded-full bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center mx-auto mb-6 ring-8 ring-emerald-100 dark:ring-emerald-900/30"
                     >
                       <CheckCircle className="w-12 h-12 text-emerald-500" />
                     </motion.div>
-                    <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 12 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.15 }}
+                    >
                       <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white mb-3">
                         Message received! 🎉
                       </h3>
                       <p className="text-slate-600 dark:text-slate-400 max-w-sm mx-auto leading-relaxed">
-                        Thank you for reaching out. We've sent a confirmation to your inbox and our team will respond within <strong>24 hours</strong>.
+                        Thank you for reaching out. We've sent a confirmation to
+                        your inbox and our team will respond within{" "}
+                        <strong>24 hours</strong>.
                       </p>
                       <p className="mt-3 text-sm text-slate-400 dark:text-slate-500">
                         Need urgent help? Chat with us instantly on WhatsApp.
@@ -253,7 +265,15 @@ export default function ContactPage() {
                           <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
                         </a>
                         <button
-                          onClick={() => { setStatus("idle"); setFormData({ name: "", email: "", subject: "", message: "" }); }}
+                          onClick={() => {
+                            setStatus("idle");
+                            setFormData({
+                              name: "",
+                              email: "",
+                              subject: "",
+                              message: "",
+                            });
+                          }}
                           className="inline-flex items-center justify-center gap-2 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-primary-300 dark:hover:border-primary-700 hover:text-primary-600 dark:hover:text-primary-400 px-6 py-3 rounded-xl font-semibold transition-all"
                         >
                           Send another message
@@ -374,9 +394,14 @@ export default function ContactPage() {
                         className="w-full inline-flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 disabled:opacity-70 disabled:cursor-not-allowed text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg shadow-primary-600/25"
                       >
                         {status === "loading" ? (
-                          <><Loader2 className="w-5 h-5 animate-spin" /> Sending…</>
+                          <>
+                            <Loader2 className="w-5 h-5 animate-spin" />{" "}
+                            Sending…
+                          </>
                         ) : (
-                          <><Send className="w-5 h-5" /> Send Message</>
+                          <>
+                            <Send className="w-5 h-5" /> Send Message
+                          </>
                         )}
                       </motion.button>
                     </form>
