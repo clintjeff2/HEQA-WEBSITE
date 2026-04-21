@@ -8,6 +8,8 @@ import {
   Send,
   Clock,
   CheckCircle,
+  AlertCircle,
+  Loader2,
 } from "lucide-react";
 
 const WHATSAPP_NUMBER = "237690055252";
@@ -19,14 +21,26 @@ export default function ContactPage() {
     subject: "",
     message: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Build mailto link as a fallback
-    const mailtoLink = `mailto:info@heqasolutions.com?subject=${encodeURIComponent(formData.subject || "Website Enquiry")}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
-    window.location.href = mailtoLink;
-    setSubmitted(true);
+    setStatus("loading");
+    setErrorMsg("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Something went wrong.");
+      setStatus("success");
+    } catch (err) {
+      setErrorMsg(err.message || "Failed to send. Please try WhatsApp or email directly.");
+      setStatus("error");
+    }
   };
 
   return (
@@ -209,28 +223,43 @@ export default function ContactPage() {
                 viewport={{ once: true }}
                 className="p-8 md:p-10 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800"
               >
-                {submitted ? (
-                  <div className="text-center py-16">
+                {status === "success" ? (
+                  <div className="text-center py-14">
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      className="w-20 h-20 rounded-full bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center mx-auto mb-6"
+                      transition={{ type: "spring", stiffness: 260, damping: 18 }}
+                      className="w-24 h-24 rounded-full bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center mx-auto mb-6 ring-8 ring-emerald-100 dark:ring-emerald-900/30"
                     >
-                      <CheckCircle className="w-10 h-10 text-emerald-600" />
+                      <CheckCircle className="w-12 h-12 text-emerald-500" />
                     </motion.div>
-                    <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
-                      Message sent!
-                    </h3>
-                    <p className="text-slate-600 dark:text-slate-400">
-                      Your email client should have opened. We'll get back to
-                      you soon.
-                    </p>
-                    <button
-                      onClick={() => setSubmitted(false)}
-                      className="mt-6 text-primary-600 dark:text-primary-400 font-semibold hover:underline"
-                    >
-                      Send another message
-                    </button>
+                    <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}>
+                      <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white mb-3">
+                        Message received! 🎉
+                      </h3>
+                      <p className="text-slate-600 dark:text-slate-400 max-w-sm mx-auto leading-relaxed">
+                        Thank you for reaching out. We've sent a confirmation to your inbox and our team will respond within <strong>24 hours</strong>.
+                      </p>
+                      <p className="mt-3 text-sm text-slate-400 dark:text-slate-500">
+                        Need urgent help? Chat with us instantly on WhatsApp.
+                      </p>
+                      <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+                        <a
+                          href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ebe5d] text-white px-6 py-3 rounded-xl font-bold transition-all shadow-lg"
+                        >
+                          <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
+                        </a>
+                        <button
+                          onClick={() => { setStatus("idle"); setFormData({ name: "", email: "", subject: "", message: "" }); }}
+                          className="inline-flex items-center justify-center gap-2 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-primary-300 dark:hover:border-primary-700 hover:text-primary-600 dark:hover:text-primary-400 px-6 py-3 rounded-xl font-semibold transition-all"
+                        >
+                          Send another message
+                        </button>
+                      </div>
+                    </motion.div>
                   </div>
                 ) : (
                   <>
@@ -327,13 +356,28 @@ export default function ContactPage() {
                           placeholder="How can we help you?"
                         />
                       </div>
+                      {status === "error" && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="flex items-start gap-3 p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400"
+                        >
+                          <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                          <p className="text-sm font-medium">{errorMsg}</p>
+                        </motion.div>
+                      )}
                       <motion.button
                         type="submit"
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        className="w-full inline-flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg shadow-primary-600/25"
+                        disabled={status === "loading"}
+                        whileHover={status !== "loading" ? { scale: 1.02 } : {}}
+                        whileTap={status !== "loading" ? { scale: 0.98 } : {}}
+                        className="w-full inline-flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 disabled:opacity-70 disabled:cursor-not-allowed text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg shadow-primary-600/25"
                       >
-                        <Send className="w-5 h-5" /> Send Message
+                        {status === "loading" ? (
+                          <><Loader2 className="w-5 h-5 animate-spin" /> Sending…</>
+                        ) : (
+                          <><Send className="w-5 h-5" /> Send Message</>
+                        )}
                       </motion.button>
                     </form>
                   </>
