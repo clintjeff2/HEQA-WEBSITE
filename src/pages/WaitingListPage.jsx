@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Rocket,
@@ -28,10 +28,20 @@ export default function WaitingListPage() {
     name: "",
     whatsapp: "",
     level: "",
+    phoneType: "",
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const formRef = useRef(null);
+
+  // Scroll straight to the form as soon as the page mounts
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   const sanitize = (str) => str.replace(/[<>{}]/g, "").trim();
 
@@ -60,6 +70,10 @@ export default function WaitingListPage() {
     }
     if (!["200", "300", "400"].includes(level)) {
       setError("Please select your HND level.");
+      return;
+    }
+    if (!["android", "iphone"].includes(formData.phoneType)) {
+      setError("Please select your phone type.");
       return;
     }
 
@@ -92,6 +106,7 @@ export default function WaitingListPage() {
         name: name,
         whatsapp: normalizedNumber,
         level: parseInt(level),
+        phoneType: formData.phoneType,
         joinedAt: serverTimestamp(),
         source: "website",
         premiumGranted: false,
@@ -261,6 +276,7 @@ export default function WaitingListPage() {
 
             {/* Form */}
             <motion.div
+              ref={formRef}
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -393,6 +409,36 @@ export default function WaitingListPage() {
                             </button>
                           ))}
                         </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
+                          Your Phone Type *
+                        </label>
+                        <div className="grid grid-cols-2 gap-3">
+                          {[
+                            { value: "android", label: "Android" },
+                            { value: "iphone", label: "iPhone" },
+                          ].map(({ value, label }) => (
+                            <button
+                              key={value}
+                              type="button"
+                              onClick={() =>
+                                setFormData({ ...formData, phoneType: value })
+                              }
+                              className={`py-3.5 rounded-xl border-2 text-sm font-bold transition-all ${
+                                formData.phoneType === value
+                                  ? "border-primary-500 bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 shadow-md"
+                                  : "border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-600"
+                              }`}
+                            >
+                              {label}
+                            </button>
+                          ))}
+                        </div>
+                        <p className="text-xs text-slate-400 mt-1">
+                          Helps us prioritise which platform to launch first.
+                        </p>
                       </div>
 
                       {error && (
