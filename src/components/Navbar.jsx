@@ -134,16 +134,6 @@ export default function Navbar({ theme, toggleTheme }) {
               )}
             </motion.button>
 
-            <Link
-              to="/waitlist"
-              className={`text-sm font-medium transition-colors duration-300 px-4 py-2 ${
-                isScrolled
-                  ? "text-slate-600 dark:text-slate-400 hover:text-primary-600"
-                  : "text-white/80 hover:text-white"
-              }`}
-            >
-              Pricing
-            </Link>
             <Link to="/waitlist">
               <motion.button
                 whileHover={{ scale: 1.05 }}
